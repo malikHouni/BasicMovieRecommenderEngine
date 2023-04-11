@@ -4,9 +4,9 @@ from scipy.sparse.linalg import *
 import warnings
 warnings.filterwarnings('ignore')
 
-movies=pd.read_csv('./ml-1m/movies.dat',sep="::",encoding='latin',header=None,names=["MovieID","Title","Genres"])
-ratings=pd.read_csv('./ml-1m/ratings.dat',sep="::",encoding='latin',header=None,names=["UserID","MovieID","Rating","Timestamp"])
-users=pd.read_csv('./ml-1m/users.dat',sep="::",encoding='latin',header=None,names=["UserID","Gender","Age","Occupation","Zip-code"])
+movies=pd.read_csv('./movies.dat',sep="::",encoding='latin',header=None,names=["MovieID","Title","Genres"])
+ratings=pd.read_csv('./ratings.dat',sep="::",encoding='latin',header=None,names=["UserID","MovieID","Rating","Timestamp"])
+users=pd.read_csv('./users.dat',sep="::",encoding='latin',header=None,names=["UserID","Gender","Age","Occupation","Zip-code"])
 
 def recommendation(person,df_ratings):
   df_beforePivot= pd.merge(movies, df_ratings,on="MovieID")
