@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-#from scipy.sparse.linalg import *
+from scipy.sparse.linalg import *
 
 
 movies=pd.read_csv('https://raw.githubusercontent.com/ChicagoBoothML/DATA___MovieLens___1M/master/movies.dat',sep="::",encoding='latin',header=None,names=["MovieID","Title","Genres"])
