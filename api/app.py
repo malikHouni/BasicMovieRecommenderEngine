@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
 from scipy.sparse.linalg import *
-import warnings
-warnings.filterwarnings('ignore')
 
 movies=pd.read_csv('./movies.dat',sep="::",encoding='latin',header=None,names=["MovieID","Title","Genres"])
 ratings=pd.read_csv('./ratings.dat',sep="::",encoding='latin',header=None,names=["UserID","MovieID","Rating","Timestamp"])
@@ -57,9 +55,7 @@ def removeStupidSpaceInJson(currArray):
 
 
 from flask import Flask, render_template, request, jsonify
-from flask_ngrok import run_with_ngrok
-app = Flask(__name__, template_folder='./')
-run_with_ngrok(app)   
+app = Flask(__name__, template_folder='./')  
   
 @app.route("/")
 def home():
