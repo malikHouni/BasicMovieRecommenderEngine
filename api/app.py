@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from scipy.sparse.linalg import *
+from scipy.sparse.linalg import svds
 
 from flask import Flask, render_template
 
