@@ -32,7 +32,7 @@ def recommendation(person,df_ratings):
   FinalListRecommendation.sort()
   FinalListRecommendation.reverse()
   return FinalListRecommendation[0:10]
-"""
+
 def addUser(Name,Gender,Occupation,ZipCode,DataFrameUsers,currentUserId):
   currentUserId=users.count()[0]+1
   DataFrameUsers=DataFrameUsers.append({"UserID":users.count()[0]+1,"Gender":Gender,"Age":15,"Occupation":10,"Zip-code":ZipCode},ignore_index=True)
@@ -54,14 +54,14 @@ def removeStupidSpaceInJson(currArray):
     currElem=currElem[:-1]#remove last elem in string
     newArray.append(currElem)
   return newArray
-
+"""
 
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__, template_folder='./') 
   
 @app.route("/")
 def home():
-    return render_template('index.html',data=["toto1","toto2"])
+    return render_template('index.html')
 
 @app.route("/routeListOfMoviesLiked" ,methods=["GET", "POST"])
 def getMyRecommendation():
