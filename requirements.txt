@@ -1,6 +1,6 @@
 Flask==2.2.2
 requests==2.28.2
-render_template==1.1.1
+render_template==2.1.1
 jsonify==1.1.1
 numpy==1.24.2
 pandas==1.5.3
