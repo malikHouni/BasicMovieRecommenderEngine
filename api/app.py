@@ -7,6 +7,7 @@ movies=pd.read_csv('https://raw.githubusercontent.com/ChicagoBoothML/DATA___Movi
 ratings=pd.read_csv('https://raw.githubusercontent.com/ChicagoBoothML/DATA___MovieLens___1M/master/ratings.dat',sep="::",encoding='latin',header=None,names=["UserID","MovieID","Rating","Timestamp"])
 users=pd.read_csv('https://raw.githubusercontent.com/ChicagoBoothML/DATA___MovieLens___1M/master/users.dat',sep="::",encoding='latin',header=None,names=["UserID","Gender","Age","Occupation","Zip-code"])
 
+"""
 def recommendation(person,df_ratings):
   df_beforePivot= pd.merge(movies, df_ratings,on="MovieID")
   df_users_ratings_films = df_beforePivot.pivot_table(values="Rating",index="UserID",columns="Title").fillna(0)
@@ -31,7 +32,7 @@ def recommendation(person,df_ratings):
   FinalListRecommendation.sort()
   FinalListRecommendation.reverse()
   return FinalListRecommendation[0:10]
-
+"""
 def addUser(Name,Gender,Occupation,ZipCode,DataFrameUsers,currentUserId):
   currentUserId=users.count()[0]+1
   DataFrameUsers=DataFrameUsers.append({"UserID":users.count()[0]+1,"Gender":Gender,"Age":15,"Occupation":10,"Zip-code":ZipCode},ignore_index=True)
