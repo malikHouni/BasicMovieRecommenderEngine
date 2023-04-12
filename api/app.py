@@ -3,9 +3,9 @@ import pandas as pd
 #from scipy.sparse.linalg import *
 
 
-movies=pd.read_csv('./movies.dat',sep="::",encoding='latin',header=None,names=["MovieID","Title","Genres"])
-ratings=pd.read_csv('./ratings.dat',sep="::",encoding='latin',header=None,names=["UserID","MovieID","Rating","Timestamp"])
-users=pd.read_csv('./users.dat',sep="::",encoding='latin',header=None,names=["UserID","Gender","Age","Occupation","Zip-code"])
+movies=pd.read_csv('https://raw.githubusercontent.com/ChicagoBoothML/DATA___MovieLens___1M/master/movies.dat',sep="::",encoding='latin',header=None,names=["MovieID","Title","Genres"])
+ratings=pd.read_csv('https://raw.githubusercontent.com/ChicagoBoothML/DATA___MovieLens___1M/master/ratings.dat',sep="::",encoding='latin',header=None,names=["UserID","MovieID","Rating","Timestamp"])
+users=pd.read_csv('https://raw.githubusercontent.com/ChicagoBoothML/DATA___MovieLens___1M/master/users.dat',sep="::",encoding='latin',header=None,names=["UserID","Gender","Age","Occupation","Zip-code"])
 
 def recommendation(person,df_ratings):
   df_beforePivot= pd.merge(movies, df_ratings,on="MovieID")
