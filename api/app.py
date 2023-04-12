@@ -56,13 +56,13 @@ def removeStupidSpaceInJson(currArray):
   return newArray
 """
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 app = Flask(__name__, template_folder='./') 
   
 @app.route("/")
 def home():
     return render_template('index.html')
-
+"""
 @app.route("/routeListOfMoviesLiked" ,methods=["GET", "POST"])
 def getMyRecommendation():
     if request.method == 'POST':
@@ -73,5 +73,5 @@ def getMyRecommendation():
       resRecommendation=recommendation(dfUsers.count()[0]+1,dfRatings)
       return jsonify(resRecommendation)
     return render_template("index.html")
-
+"""
 app.run()
