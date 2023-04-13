@@ -52,7 +52,7 @@ app = Flask(__name__, template_folder='./')
 
 @app.route("/")
 def home():
-    return render_template('index.html',data=getAllMovies())
+    return render_template('index.html',data=["Toto","tata"])
 
 @app.route("/routeListOfMoviesLiked" ,methods=["GET", "POST"])
 def getMyRecommendation():
