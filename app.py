@@ -55,6 +55,7 @@ def removeStupidSpaceInJson(currArray):
   return newArray
 
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__, template_folder='/')
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
