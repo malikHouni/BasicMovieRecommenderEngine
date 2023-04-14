@@ -51,7 +51,7 @@
         $("#pleaseWait").css("display","block")
           var js_data = JSON.stringify(listOfMoviesLiked);
           $.ajax({                        
-              url: '/routeListOfMoviesLiked',
+              url: '/recoms',
               type : 'post',
               contentType: 'application/json',
               dataType : 'json',
