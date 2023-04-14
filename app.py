@@ -58,13 +58,13 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__, template_folder='/')
-cors = CORS(app)
 
 @app.route("/")
 def home():
     return render_template('index.html',data=getAllMovies())
 
 @app.route("/recoms" ,methods=["GET", "POST"])
+@cross_origin()
 def getMyRecommendation():
     if request.method == 'POST':
       data = request.json
