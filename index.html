@@ -1,22 +1,25 @@
 <html>
   <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300&display=swap" rel="stylesheet">
     <style>
       body{background-color:#FFF;font-family: 'Great Vibes', cursive;font-family: 'Roboto', sans-serif;}
       #header{width:100%;border:1px solid black;text-align:center;background-color:#F2F2F2;}
-      #allMovies{float:left;border:1px dotted black;width:30%;height:90%;overflow:scroll;padding:0 2em 0 2em;}
+      #allMovies{float:left;border:1px dotted black;width:25%;height:90%;overflow:scroll;padding:0 2em 0 2em;margin-left:2em;}
       #allMovies p{text-align:center;border:1px solid black;padding:0.2em;}
-      
-      #myMoviesLiked{float:left;border:1px dotted black;width:30%;height:90%;overflow:scroll;padding:0 0 0 2em;margin:0 1em 0 1em;}
+
+      #myMoviesLiked{float:left;border:1px dotted black;width:25%;height:90%;overflow:scroll;padding:0 0 0 2em;margin:0 0.5em 0 0.5em;}
       #myMoviesLiked li{font-size:2em;list-style-type: none;padding:1em;}
-      
-      #myRecommendation{float:left;border:1px dotted black;width:30%;height:90%;overflow:scroll;padding:0 0 0 2em;text-align:center;}
+
+      #myRecommendation{float:left;border:1px dotted black;width:25%;height:90%;overflow:scroll;padding:0 0 0 1em;text-align:center;}
       #btnGetRecommendation{background:#e74c3c;border-radius:2em;color:#FFF;font-size:2em;display:block;}
       #resultsRecommendation li{font-size:2em;list-style-type: none;padding:1em;margin:0.5em 0 0.5em 0;border:1px solid black;}
     </style>
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
   </head>
   <body>
     <h1  id="header">Movie Recommender</h1>
@@ -24,12 +27,12 @@
     <div id="allMovies">
       {% for item in data %}
           <p> {{ item }} </p>
-      {% endfor %}  
+      {% endfor %}
     </div>
     <div id="myMoviesLiked">
-       
+
     </div>
-    
+
     <div id="myRecommendation">
       <button id="btnGetRecommendation" name="forwardBtn" type="submit">Recommend Me</button>
       <div id="pleaseWait" style="display:none; font-size:2em;margin-top:3em;">Please wait ...</div>
@@ -42,16 +45,16 @@
         //console.log($(this).html());
         listOfMoviesLiked.push($(this).html());
         //nl, remove duplicate
-        listOfMoviesLiked=[...new Set(listOfMoviesLiked)]; 
-        document.getElementById("myMoviesLiked").innerHTML+="<li>"+$(this).html()+"</li>";      
+        listOfMoviesLiked=[...new Set(listOfMoviesLiked)];
+        document.getElementById("myMoviesLiked").innerHTML+="<li>"+$(this).html()+"</li>";
       });
 
       $("#btnGetRecommendation").on("click", function() {
         $("#btnGetRecommendation").css("display","none")
         $("#pleaseWait").css("display","block")
           var js_data = JSON.stringify(listOfMoviesLiked);
-          $.ajax({                        
-              url: '/recoms',
+          $.ajax({
+              url: '/routeListOfMoviesLiked',
               type : 'post',
               contentType: 'application/json',
               dataType : 'json',
@@ -63,13 +66,14 @@
                 str+="<li>"+result[it][1]+"</li>"
               }
               $("#resultsRecommendation").html(str);
-              
+
           }).fail(function(jqXHR, textStatus, errorThrown) {
-              console.log("fail: ",textStatus, errorThrown);
+              console.log("fail fuch: ",textStatus, errorThrown);
           });
       });
 
 
     </script>
+
   </body>
 </html>
