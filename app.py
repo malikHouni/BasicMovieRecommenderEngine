@@ -66,7 +66,6 @@ def home():
 def getMyRecommendation():
     if request.method == 'POST':
       data = request.json
-      console.log("we have data:",data)
       currentUserId=users.count()[0]+1
       dfUsers=addUser("8888","F","Journalist","72000",users,currentUserId)[0]
       dfRatings=addNewUserRatings(removeStupidSpaceInJson(data),ratings,dfUsers)
