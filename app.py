@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from scipy.sparse.linalg import *
+from scipy.sparse.linalg import svds
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -14,7 +14,6 @@ def recommendation(person,df_ratings):
   #getting R
   R=df_users_ratings_films.values
   User_ratings_mean = np.mean(R,axis=1)
-  R_demeaned = R - User_ratings_mean.reshape(-1,1)
   #Matrix Factorization with S.V.D
   U,sigma,Vt=svds(R,k=50)
   sigma =np.diag(sigma)
@@ -55,16 +54,15 @@ def removeStupidSpaceInJson(currArray):
   return newArray
 
 from flask import Flask, render_template, request, jsonify
-from flask_cors import CORS
 
-app = Flask(__name__, template_folder='/')
+
+app = Flask(__name__, template_folder='/home/Malik221/BasicMovieRecommenderEngine')
 
 @app.route("/")
 def home():
     return render_template('index.html',data=getAllMovies())
 
-@app.route("/recoms" ,methods=["GET", "POST"])
-@cross_origin()
+@app.route("/routeListOfMoviesLiked" ,methods=["GET", "POST"])
 def getMyRecommendation():
     if request.method == 'POST':
       data = request.json
@@ -74,3 +72,4 @@ def getMyRecommendation():
       resRecommendation=recommendation(dfUsers.count()[0]+1,dfRatings)
       return jsonify(resRecommendation)
     return render_template("index.html")
+
