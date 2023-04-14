@@ -56,7 +56,7 @@ def removeStupidSpaceInJson(currArray):
 from flask import Flask, render_template, request, jsonify
 
 
-app = Flask(__name__, template_folder='')
+app = Flask(__name__, template_folder='/')
 
 @app.route("/")
 def home():
