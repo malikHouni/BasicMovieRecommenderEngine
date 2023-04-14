@@ -46,6 +46,14 @@ def addNewUserRatings(listOfMoviesLiked,DataFrameUsersRatings,dfUser):
     DataFrameUsersRatings=DataFrameUsersRatings.append({"UserID":dfUser.count()[0]+1,"MovieID":movies[movies["Title"]==listOfMoviesLiked[i]]["MovieID"].values[0],"Rating":6,"Timestamp":10},ignore_index=True)
   return DataFrameUsersRatings
 
+def removeStupidSpaceInJson(currArray):
+  newArray=[]
+  for i in range(0,len(currArray)):
+    currElem=currArray[i].lstrip(currArray[i][0])#remove first elem in string
+    currElem=currElem[:-1]#remove last elem in string
+    newArray.append(currElem)
+  return newArray
+
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__, template_folder='./')
