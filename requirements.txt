@@ -4,4 +4,5 @@ requests
 scikit-learn
 scipy
 Flask
+flask-cors
 Gunicorn
