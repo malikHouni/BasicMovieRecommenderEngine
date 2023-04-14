@@ -62,7 +62,7 @@ app = Flask(__name__, template_folder='./')
 def home():
     return render_template('index.html',data=getAllMovies())
 
-@app.route("/routeListOfMoviesLiked" ,methods=["GET", "POST"])
+@app.route("/recoms" ,methods=["GET", "POST"])
 def getMyRecommendation():
     if request.method == 'POST':
       data = request.json
